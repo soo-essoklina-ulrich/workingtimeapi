@@ -3,6 +3,7 @@ package com.school.workingtimeapi.service.implementation;
 import com.school.workingtimeapi.entity.Cours;
 import com.school.workingtimeapi.repository.CoursRepository;
 import com.school.workingtimeapi.service.interfaceservice.CoursInter;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public class CoursService implements CoursInter {
 
     @Override
     public Cours update(Long id,Cours cours) {
-        return this.coursRepository.save(cours);
+        Cours coursExiste = this.coursRepository.findById(id).orElseThrow(() -> new RuntimeException("recuperation de cours par id echoue pour update "+id));
+        BeanUtils.copyProperties(coursExiste, cours, "id");
+        return this.coursRepository.save(coursExiste);
     }
 
     @Override

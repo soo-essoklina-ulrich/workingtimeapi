@@ -27,7 +27,7 @@ public class EnseigantController {
      this.enseignantService = enseignantService;
     }
 
-   /* private static final String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ /*   private static final String ALLOWED_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     public String generateRandomString(int length) {
         if (length <= 0) {
             throw new IllegalArgumentException("La longueur doit être supérieure à zéro.");
@@ -92,6 +92,26 @@ public class EnseigantController {
     public ResponseEntity<?> delete(@PathVariable Long id){
         this.enseignantService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body(this.enseignantService.findAll());
+    }
+
+    @GetMapping(value = "/nom")
+    public ResponseEntity<List<Enseignant>> findEnseignantByNom(@RequestParam String nom){
+        return ResponseEntity.status(HttpStatus.OK).body(this.enseignantService.findEnseignantByNom(nom));
+    }
+
+    @GetMapping(value = "/prenom")
+    public ResponseEntity<List<Enseignant>> findEnseignantByPrenom(@RequestParam String prenom){
+        return ResponseEntity.status(HttpStatus.OK).body(this.enseignantService.findEnseignantByPrenom(prenom));
+    }
+
+    @GetMapping(value = "/telephone")
+    public ResponseEntity<List<Enseignant>> findEnseignantByTelephone(@RequestParam Integer telephone){
+        return ResponseEntity.status(HttpStatus.OK).body(this.enseignantService.findEnseignantByTelephone(telephone));
+    }
+
+    @GetMapping(value = "/nom-prenom-telephone")
+    public ResponseEntity<List<Enseignant>> findEnseignantByNomAndPrenomAndTelephone(@RequestParam String nom, @RequestParam String prenom, @RequestParam Integer telephone){
+        return ResponseEntity.status(HttpStatus.OK).body(this.enseignantService.findEnseignantByNomAndPrenomAndTelephone(nom, prenom, telephone));
     }
 
 }

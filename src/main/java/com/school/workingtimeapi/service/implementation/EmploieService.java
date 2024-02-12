@@ -23,7 +23,17 @@ public class EmploieService implements EmploieInter {
 
     @Override
     public EmploieTemps save(EmploieTemps e) {
-        return this.emploieTempsRepository.save(e);
+        EmploieTemps lastItememploieTemps = this.emploieTempsRepository.lastItem();
+        if (lastItememploieTemps != null){
+            if (lastItememploieTemps.getHeurefin().before(e.getHeuredebut())){
+                return this.emploieTempsRepository.save(e);
+            }else {
+                return null;
+            }
+        }else {
+            return null;
+        }
+
     }
 
     @Override

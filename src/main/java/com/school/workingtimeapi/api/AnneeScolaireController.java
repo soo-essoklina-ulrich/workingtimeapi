@@ -26,8 +26,8 @@ public class AnneeScolaireController {
         for (int i = 0; i < 10; i++) {
             AnneeScolaire anneeScolaire = new AnneeScolaire();
             anneeScolaire.setCode("a"+i);
-            anneeScolaire.setDateDebut(Date.from(Instant.now()));
-            anneeScolaire.setDateFin(new Date(2024,12,30+i));
+            anneeScolaire.setDateDebut(new Date(2024, Calendar.JANUARY,1));
+            anneeScolaire.setDateFin(new Date(2024,Calendar.FEBRUARY,1));
             this.anneeScolaireService.save(anneeScolaire);
         }
     }*/

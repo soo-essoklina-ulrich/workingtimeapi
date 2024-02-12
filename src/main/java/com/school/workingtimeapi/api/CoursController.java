@@ -17,7 +17,7 @@ public class CoursController {
         this.coursService = coursService;
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/list")
     public ResponseEntity<?> getAllCours() {
         return ResponseEntity.status(HttpStatus.OK).body(this.coursService.findAll());
     }
