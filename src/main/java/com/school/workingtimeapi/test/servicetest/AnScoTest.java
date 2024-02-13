@@ -8,25 +8,23 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-//@Component
+@Component
 public class AnScoTest implements CommandLineRunner {
-   /* @Autowired
+    @Autowired
     private AnneScolaireService anneScolaireService;
 
     private final AnneeScolaire anneeScolaire = new AnneeScolaire(1L, "2019-2020", new Date(), new Date());
-    */
 
     @Override
     public void run(String... args) throws Exception {
-        //this.testcreate();
+        this.testcreate();
+        this.findAll();
+        this.update();
+        this.delete();
     }
-/*
     public void testcreate() {
-        AnneeScolaire anneeScolaire = new AnneeScolaire();
-        anneeScolaire.setDateDebut(new Date());
-        anneeScolaire.setDateFin(new Date());
-        anneeScolaire.setCode("2019-2020");
-        this.anneScolaireService.save(anneeScolaire);
+
+        this.anneScolaireService.save(this.anneeScolaire);
     }
 
     public void findAll() {
@@ -34,12 +32,15 @@ public class AnScoTest implements CommandLineRunner {
     }
 
     public void update() {
-        this.anneScolaireService.update(1L, anneeScolaire);
+        AnneeScolaire New = new AnneeScolaire();
+        New.setCode("new");
+        New.setDateDebut(new Date());
+        this.anneScolaireService.update(1L, New);
     }
 
     public void delete() {
         this.anneScolaireService.delete(anneeScolaire.getId());
-    }*/
+    }
 
 }
 
