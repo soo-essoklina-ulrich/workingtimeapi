@@ -13,7 +13,7 @@ public class AnneScolaireService implements AnneScolaireInter {
 
     private final AnneeScolaireRepository anneeScolaireRepository;
 
-    public AnneScolaireService(AnneeScolaireRepository an, AnneeScolaireRepository anneeScolaireRepository) {
+    public AnneScolaireService(AnneeScolaireRepository anneeScolaireRepository) {
         this.anneeScolaireRepository = anneeScolaireRepository;
     }
 

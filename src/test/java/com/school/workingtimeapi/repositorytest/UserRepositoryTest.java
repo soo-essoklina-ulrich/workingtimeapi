@@ -34,8 +34,6 @@ public class UserRepositoryTest {
         //Assert
 
         Assertions.assertEquals(userDetails, saveuser);
-
-        //etudiantRepository.findAll().forEach(System.out::println);
     }
 
 }
