@@ -6,6 +6,7 @@ import com.school.workingtimeapi.service.interfaceservice.userinter.Admininter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 @Service
 public class AdminService implements Admininter {
@@ -27,8 +28,8 @@ public class AdminService implements Admininter {
     }
 
     @Override
-    public Admin update(Long id, Admin a) {
-        Admin adminexisting = this.adminRepository.findById(id).orElseThrow(() -> new RuntimeException("Admin not found with id: " + id));
+    public Admin update(Long id, Admin a) throws SQLException {
+        Admin adminexisting = this.adminRepository.findById(id).orElseThrow(() -> new SQLException("Admin not found with id: " + id));
         BeanUtils.copyProperties(a, adminexisting, "id");
         return this.adminRepository.save(a);
 

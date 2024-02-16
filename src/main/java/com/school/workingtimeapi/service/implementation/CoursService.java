@@ -6,6 +6,7 @@ import com.school.workingtimeapi.service.interfaceservice.CoursInter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 @Service
 public class CoursService implements CoursInter {
@@ -25,8 +26,8 @@ public class CoursService implements CoursInter {
     }
 
     @Override
-    public Cours update(Long id,Cours cours) {
-        Cours coursExiste = this.coursRepository.findById(id).orElseThrow(() -> new RuntimeException("recuperation de cours par id echoue pour update "+id));
+    public Cours update(Long id,Cours cours) throws SQLException {
+        Cours coursExiste = this.coursRepository.findById(id).orElseThrow(() -> new SQLException("recuperation de cours par id echoue pour update "+id));
         BeanUtils.copyProperties(coursExiste, cours, "id");
         return this.coursRepository.save(coursExiste);
     }

@@ -2,6 +2,7 @@ package com.school.workingtimeapi.service.interfaceservice;
 
 import com.school.workingtimeapi.entity.Matiere;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface MatiereInter {
@@ -9,7 +10,7 @@ public interface MatiereInter {
 
     Matiere save(Matiere m);
 
-    Matiere update (Long id,Matiere m);
+    Matiere update (Long id,Matiere m) throws SQLException;
 
     void delete(Long id);
 

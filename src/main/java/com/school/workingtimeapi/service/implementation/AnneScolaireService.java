@@ -6,6 +6,7 @@ import com.school.workingtimeapi.service.interfaceservice.AnneScolaireInter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -28,8 +29,8 @@ public class AnneScolaireService implements AnneScolaireInter {
     }
 
     @Override
-    public AnneeScolaire update(Long id, AnneeScolaire anneeScolaire) {
-        AnneeScolaire anneeScolaireExisting = this.anneeScolaireRepository.findById(id).orElseThrow(() -> new RuntimeException("Annee Scolaire not found with id: " + id));
+    public AnneeScolaire update(Long id, AnneeScolaire anneeScolaire) throws SQLException {
+        AnneeScolaire anneeScolaireExisting = this.anneeScolaireRepository.findById(id).orElseThrow(() -> new SQLException("Annee Scolaire not found with id: " + id));
         BeanUtils.copyProperties(anneeScolaire, anneeScolaireExisting, "id");
         return this.anneeScolaireRepository.save(anneeScolaireExisting);
     }

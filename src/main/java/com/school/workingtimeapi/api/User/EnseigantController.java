@@ -1,18 +1,12 @@
 package com.school.workingtimeapi.api.User;
 
 import com.school.workingtimeapi.entity.user.Enseignant;
-import com.school.workingtimeapi.entity.user.Role;
-import com.school.workingtimeapi.entity.user.UserDetails;
 import com.school.workingtimeapi.service.implementation.userservice.EnseignantService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/enseignant")

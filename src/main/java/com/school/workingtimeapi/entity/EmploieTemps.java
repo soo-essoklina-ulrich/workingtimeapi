@@ -2,14 +2,14 @@ package com.school.workingtimeapi.entity;
 
 import com.school.workingtimeapi.entity.user.Enseignant;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class EmploieTemps {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,17 +1,14 @@
 package com.school.workingtimeapi.api.User;
 
-import com.school.workingtimeapi.entity.user.Enseignant;
 import com.school.workingtimeapi.entity.user.Role;
 import com.school.workingtimeapi.entity.user.UserDetails;
 import com.school.workingtimeapi.service.implementation.userservice.UserService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SecureRandom;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Random;
 
 
 @RestController
@@ -43,7 +40,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<UserDetails> update(@PathVariable Long id ,@RequestBody  UserDetails e){
+    public ResponseEntity<UserDetails> update(@PathVariable Long id ,@RequestBody  UserDetails e) throws SQLException {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userService.update(id,e));
     }
 

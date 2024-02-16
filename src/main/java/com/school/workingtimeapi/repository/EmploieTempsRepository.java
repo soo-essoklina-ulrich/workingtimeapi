@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmploieTempsRepository extends JpaRepository<EmploieTemps, Long> {
 
-    @Query(value = "SELECT * FROM AnneeScolaire order by id DESC limit 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Emploie_Temps order by id DESC limit 1", nativeQuery = true)
     EmploieTemps lastItem();
 }

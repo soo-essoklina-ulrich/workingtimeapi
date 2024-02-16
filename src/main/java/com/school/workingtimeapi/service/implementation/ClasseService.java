@@ -6,6 +6,7 @@ import com.school.workingtimeapi.service.interfaceservice.ClasseInter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -29,8 +30,8 @@ public class ClasseService implements ClasseInter {
     }
 
     @Override
-    public Classe update(Long id, Classe classe) {
-        Classe classeExisting = this.classeRepository.findById(id).orElseThrow(() -> new RuntimeException("Classe not found with id: " + id));
+    public Classe update(Long id, Classe classe) throws SQLException {
+        Classe classeExisting = this.classeRepository.findById(id).orElseThrow(() -> new SQLException("Classe not found with id: " + id));
         BeanUtils.copyProperties(classe, classeExisting, "id");
         return this.classeRepository.save(classeExisting);
     }

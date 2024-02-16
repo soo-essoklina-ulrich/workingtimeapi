@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.List;
 @Service
 public class MatiereService implements MatiereInter {
@@ -29,10 +30,10 @@ public class MatiereService implements MatiereInter {
     }
 
     @Override
-    public Matiere update(Long id, Matiere m) {
-        Matiere matiereExesting = this.matiereRepository.findById(id).orElseThrow(() -> new RuntimeException("Matiere not found with id: " + id));
-        BeanUtils.copyProperties(m, matiereExesting, "id");
-        return this.matiereRepository.save(m);
+    public Matiere update(Long id, Matiere m) throws SQLException {
+        Matiere matiereExesting = this.matiereRepository.findById(id).orElseThrow(() -> new SQLException("Matiere not found with id : " + id));
+        BeanUtils.copyProperties(matiereExesting, m, "id");
+        return this.matiereRepository.save(matiereExesting);
     }
 
     @Override

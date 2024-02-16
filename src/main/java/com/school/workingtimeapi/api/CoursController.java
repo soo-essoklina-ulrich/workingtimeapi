@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/cours")
@@ -28,7 +30,7 @@ public class CoursController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Cours> updateCours(@PathVariable Long id ,@RequestBody Cours cours) {
+    public ResponseEntity<Cours> updateCours(@PathVariable Long id ,@RequestBody Cours cours) throws SQLException {
         return ResponseEntity.status(HttpStatus.OK).body(this.coursService.update(id, cours));
     }
 

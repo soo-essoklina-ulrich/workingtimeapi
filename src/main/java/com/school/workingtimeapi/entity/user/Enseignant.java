@@ -1,7 +1,6 @@
 package com.school.workingtimeapi.entity.user;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
 
 
 @Entity

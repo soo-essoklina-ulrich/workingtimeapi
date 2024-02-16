@@ -2,6 +2,7 @@ package com.school.workingtimeapi.entity;
 
 import com.school.workingtimeapi.entity.user.Enseignant;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

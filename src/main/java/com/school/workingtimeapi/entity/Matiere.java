@@ -1,7 +1,6 @@
 package com.school.workingtimeapi.entity;
 
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

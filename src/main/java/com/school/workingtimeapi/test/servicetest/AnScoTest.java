@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 @Component
@@ -17,10 +18,10 @@ public class AnScoTest implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.testcreate();
-        this.findAll();
-        this.update();
-        this.delete();
+//        this.testcreate();
+//        this.findAll();
+//        this.update();
+//        this.delete();
     }
     public void testcreate() {
 
@@ -31,7 +32,7 @@ public class AnScoTest implements CommandLineRunner {
         this.anneScolaireService.findAll();
     }
 
-    public void update() {
+    public void update() throws SQLException {
         AnneeScolaire New = new AnneeScolaire();
         New.setCode("new");
         New.setDateDebut(new Date());

@@ -7,6 +7,7 @@ import com.school.workingtimeapi.service.interfaceservice.userinter.UserInter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -33,8 +34,8 @@ public class UserService implements UserInter {
     }
 
     @Override
-    public UserDetails update(Long ig ,UserDetails userDetails) {
-        UserDetails userDetailsExisting = this.userRepository.findById(ig).orElseThrow(() -> new RuntimeException("User not found with id: " + ig));
+    public UserDetails update(Long ig ,UserDetails userDetails) throws SQLException {
+        UserDetails userDetailsExisting = this.userRepository.findById(ig).orElseThrow(() -> new SQLException("User not found with id: " + ig));
         BeanUtils.copyProperties(userDetails, userDetailsExisting, "id");
         return this.userRepository.save(userDetailsExisting);
     }

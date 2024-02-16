@@ -1,15 +1,12 @@
 package com.school.workingtimeapi.api.User;
 
 import com.school.workingtimeapi.entity.user.Admin;
-import com.school.workingtimeapi.entity.user.Enseignant;
-import com.school.workingtimeapi.entity.user.Role;
 import com.school.workingtimeapi.service.implementation.userservice.AdminService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.SecureRandom;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -77,7 +74,7 @@ public class AdminController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Admin> update(@PathVariable Long id , @RequestBody Admin e){
+    public ResponseEntity<Admin> update(@PathVariable Long id , @RequestBody Admin e) throws SQLException {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.adminService.update(id,e));
     }
 

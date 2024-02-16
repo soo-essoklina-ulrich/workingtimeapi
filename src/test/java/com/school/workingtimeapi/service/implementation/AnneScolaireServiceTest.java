@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,7 +53,7 @@ class AnneScolaireServiceTest {
     }
 
     @Test
-    void updateTestReturnAnScolaireToUpdate() {
+    void updateTestReturnAnScolaireToUpdate() throws SQLException {
         Long id = 1L;
         AnneeScolaire anneeScolaireToUpdate = new AnneeScolaire(1L, "anne2", new Date(125,04,01), new Date(124,04,01));
         AnneeScolaire anneeScolaireToExiste = new AnneeScolaire(1L, "anne1", new Date(124,04,01), new Date(125,04,01));
@@ -72,7 +73,7 @@ class AnneScolaireServiceTest {
 
         when(anneeScolaireRepository.findById(id)).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> anneScolaireService.update(id, anneeScolaireToUpdate));}
+        assertThrows(SQLException.class, () -> anneScolaireService.update(id, anneeScolaireToUpdate));}
 
     @Test
     void deleteTestAnneScolaireEaraseObject() {

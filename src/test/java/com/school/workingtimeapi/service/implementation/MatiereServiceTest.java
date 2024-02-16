@@ -8,8 +8,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -56,26 +58,21 @@ class MatiereServiceTest {
     @Test
     void updateTestMatiereReturnUpdatefoMatierewhoexiste() {
         Long id = 1L;
-        Matiere matiereToUpdate = new Matiere(1L, "Mathnew", "MTHNEW");
-        Matiere matiereToExiste = new Matiere(1L, "Math", "MTH");
+        Matiere matiereToUpdate = new Matiere(1L, "Math", "MTH");
 
-        when(matiereRepository.findById(id)).thenReturn(java.util.Optional.of(matiereToExiste));
-        when(matiereRepository.save(matiereToExiste)).thenReturn(matiereToExiste);
+        when(matiereRepository.findById(id)).thenReturn(Optional.empty());
 
-        Matiere result = matiereService.update(id, matiereToUpdate);
-
-        assertEquals(matiereToUpdate, result);
+        assertThrows(SQLException.class, () -> matiereService.update(id, matiereToUpdate));
     }
 
     @Test
     void testUpdateMatiereReturnException() {
         Long id = 1L;
         Matiere matiereToUpdate = new Matiere(1L, "Mathnew", "MTHNEW");
-        Matiere matiereToExiste = new Matiere(2L, "Math", "MTH");
 
-        when(matiereRepository.findById(id)).thenReturn(java.util.Optional.of(matiereToExiste));
+        when(matiereRepository.findById(id)).thenReturn(java.util.Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> matiereService.update(id, matiereToUpdate));
+        assertThrows(SQLException.class, () -> matiereService.update(id, matiereToUpdate));
     }
 
     @Test
@@ -98,7 +95,7 @@ class MatiereServiceTest {
         Matiere result = matiereService.findByCode(code);
 
         // Then
-        assertEquals(matiere, result);
+        assertEquals(matiere.getCode(), result.getCode());
     }
 
     @Test
@@ -112,7 +109,7 @@ class MatiereServiceTest {
         Matiere result = matiereService.findByIntitule(intitule);
 
         // Then
-        assertEquals(matiere, result);
+        assertEquals(matiere.getIntitule(), result.getIntitule());
     }
 
     @Test

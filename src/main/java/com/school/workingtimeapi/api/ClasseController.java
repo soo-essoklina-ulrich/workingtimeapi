@@ -2,12 +2,11 @@ package com.school.workingtimeapi.api;
 
 import com.school.workingtimeapi.entity.Classe;
 import com.school.workingtimeapi.service.implementation.ClasseService;
-import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -42,7 +41,7 @@ public class ClasseController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public ResponseEntity<Classe> update(@PathVariable Long id,@RequestBody Classe c){
+    public ResponseEntity<Classe> update(@PathVariable Long id,@RequestBody Classe c) throws SQLException {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.classeService.update(id, c));
     }
 

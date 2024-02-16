@@ -1,8 +1,6 @@
 package com.school.workingtimeapi.entity.user;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 
 @Entity
 public class Etudiant extends UserDetails{

@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +59,7 @@ public class ClasseServiceTest {
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdate() throws SQLException {
         // Création de données de test
         Long id = 1L;
         Classe classeToUpdate = new Classe(1L, "Classe A", "A");
@@ -85,7 +86,7 @@ public class ClasseServiceTest {
         when(classeRepository.findById(id)).thenReturn(Optional.empty());
 
         // Vérification que la méthode lance bien une exception lorsque la classe n'est pas trouvée
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(SQLException.class, () -> {
             classeService.update(id, classeToUpdate);
         });
     }
