@@ -44,8 +44,8 @@ class EmploieServiceTest {
     void testSave() {
         // Création d'un emploi fictif
 
-        EmploieTemps emploieTempsprevious = new EmploieTemps(1L,null,null,new Date(120,02,01,10,00),new Date(120,02,01,12,00),"");
-        EmploieTemps emploieTempsnew = new EmploieTemps(2L,null,null,new Date(120,02,01,13,00),new Date(121,02,01),"");
+        EmploieTemps emploieTempsprevious = new EmploieTemps(1L,null,new Date(120,02,01,10,00),new Date(120,02,01,12,00),"");
+        EmploieTemps emploieTempsnew = new EmploieTemps(2L,null,new Date(120,02,01,13,00),new Date(121,02,01),"");
 
         // Définition du comportement attendu lors de l'appel à save() du repository
         lenient().when(emploieTempsRepository.save(emploieTempsprevious)).thenReturn(emploieTempsprevious);
